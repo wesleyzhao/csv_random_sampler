@@ -3,9 +3,9 @@ import random
 import csv
 import sys
 
-IN_FILE_PATH = "/home/wesley/Downloads/d3schools.csv"
-SAMPLE_OUT_PATH = "/home/wesley/Downloads/sample_out.csv"
-REST_OUT_PATH = "/home/wesley/Downloads/rest_out.csv"
+IN_FILE_PATH = "example_files/d3schools.csv"
+SAMPLE_OUT_PATH = "example_files/sample_out.csv"
+REST_OUT_PATH = "example_files/rest_out.csv"
 SAMPLE_SIZE = 40
 
 def main():
@@ -14,11 +14,11 @@ def main():
     csv files with a random sample in one file, and the remainder in the
     other file
 
-    Syntax:
+    Syntax: 
     >> python sampler.py sample_num /path/to/input.csv /path/to/sample_out.csv /path/to/rest_out.csv
     
     Otherwise, the default value of the sample size is SAMPLE_SIZE, and the
-    output file defaults are SAMPLE_OUT_PATH and REST_OUT_PATH
+    output file defaults are SAMPLE_OUT_PATH and REST_OUT_PATH.
     """
     try:
         # try to get the sample size/file input/file output from sys.argv
@@ -26,7 +26,7 @@ def main():
         IN_FILE_PATH = sys.argv[2] # second arg is the input file path
         SAMPLE_OUT_PATH = sys.argv[3] # third arg is the output file path for the random sample
         REST_OUT_PATH = sys.argv[4] # fourth arg is the output filepath for the rest after random sample is taken
-    except KeyError:
+    except IndexError:
         # if one or more of the argv's are missing
         print "To set your own arguments follow the syntax >> python sampler.py sample_num /path/to/input.csv /path/to/sample_out.csv /path/to/rest_out.csv"
     
