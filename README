@@ -1,1 +1,15 @@
 Takes a CSV, and random sample #, then spits out a CSV with the sample, and the rest in another
+
+Here is the syntax:
+
+>> python sampler.py sample_num /path/to/input.csv /path/to/sample_out.csv /path/to/rest_out.csv
+
+
+Where:
+	sample_num - the size of the sample you wish to get
+	/path/to/input.csv - the path to the CSV file you are trying to
+	take samples from
+	/path/to/sample_out.csv - the path to the CSV file you wish to write
+	the rows to be included in the sample
+	/path/to/rest_out.csv - the path to the CSV file which the non-sample
+	rows will be written to
