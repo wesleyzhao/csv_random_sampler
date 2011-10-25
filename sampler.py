@@ -57,5 +57,12 @@ def write_sample_to_files(writable_rows, sample_file_path, rest_out_path, sample
             sample_indexes.remove(index)
             print "row %s written to SAMPLE" % str(index)
 
+def randomize_sheet(in_file, out_file):
+    rows = get_rows_from_csv(in_file)
+    writer = csv.writer(open(out_file, "wb"))
+    rand_nums = get_random_sample_indexes(len(rows), len(rows))
+    for num in rand_nums:
+        writer.writerow(rows[num])
+
 if __name__ == "__main__":
     main()
