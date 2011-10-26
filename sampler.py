@@ -98,7 +98,7 @@ def make_sports_sheet(in_file, out_file, column_num = 2):
     rows = get_rows_from_csv(in_file)
     writer = csv.writer(open(out_file, "wb"))
     
-    for row in rows[0:2]:
+    for row in rows:
         for sport in SPORTS:
             sport_row = row[:] # have to return new row, otherwise editing sport_row will edit row... not good
             sport_row.insert(column_num, sport)
