@@ -7,6 +7,30 @@ IN_FILE_PATH = "example_files/d3schools.csv"
 SAMPLE_OUT_PATH = "example_files/sample_out.csv"
 REST_OUT_PATH = "example_files/rest_out.csv"
 SAMPLE_SIZE = 40
+SPORTS = ["Men's Baseball",
+          "Men's Basketball",
+          "Men's Cross Country",
+          "Men's Football",
+          "Men's Golf",
+          "Men's Lacrosse",
+          "Men's Rowing/Crew",
+          "Men's Swim & Dive",
+          "Men's Tennis",
+          "Men's Track & Field",
+          "Men's Wrestling",
+          "Women's Basketball",
+          "Women's Cross Country",
+          "Women's Field Hockey",
+          "Women's Golf",
+          "Women's Gymnastics",
+          "Women's Lacrosse",
+          "Women's Rowing/Crew",
+          "Women's Soccer",
+          "Women's Softball",
+          "Women's Swim & Dive",
+          "Women's Tennis",
+          "Women's Track & Field",
+          "Women's Volleyball"]
 
 def main():
     """
@@ -63,6 +87,24 @@ def randomize_sheet(in_file, out_file):
     rand_nums = get_random_sample_indexes(len(rows), len(rows))
     for num in rand_nums:
         writer.writerow(rows[num])
+
+def make_sports_sheet(in_file, out_file, column_num = 2):
+    # column_num is after which column you want to add the sports in
+    # default is after column 2 (columns start at 0). Use 0 if you want
+    # it to be the first column
+    if column_num < 0:
+        raise Exception("column_num cannot be less than 0")
+
+    rows = get_rows_from_csv(in_file)
+    writer = csv.writer(open(out_file, "wb"))
+    
+    for row in rows[0:2]:
+        for sport in SPORTS:
+            sport_row = row[:] # have to return new row, otherwise editing sport_row will edit row... not good
+            sport_row.insert(column_num, sport)
+            print row, sport_row
+            writer.writerow(sport_row)
+
 
 if __name__ == "__main__":
     main()
